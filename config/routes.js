@@ -4,7 +4,7 @@ const restrictedPages = require("./auth");
 module.exports = app => {
   //user
   app.get("/", controllers.home.index);
-  app.get("/about", restrictedPages.hasRole("Admin"), controllers.home.about);
+  
   app.get("/register", controllers.user.registerGet);
   app.post("/register", controllers.user.registerPost);
   app.post("/logout", controllers.user.logout);
