@@ -4,6 +4,7 @@ mongoose.Promise = global.Promise;
 const User = require("../models/User");
 require("../models/Story");
 require("../models/CommentData");
+require("../models/Destination");
 
 module.exports = config => {
   mongoose.connect(

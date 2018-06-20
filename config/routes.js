@@ -35,6 +35,11 @@ module.exports = app => {
     controllers.story.comment
   );
 
+  //destinations
+  app.get("/destination/create", restrictedPages.hasRole('Admin'), controllers.destination.getCreate);
+  app.post("/destination/create", restrictedPages.hasRole('Admin'), controllers.destination.postCreate);
+ 
+
   app.all("*", (req, res) => {
     res.status(404);
     res.send("404 Not Found");

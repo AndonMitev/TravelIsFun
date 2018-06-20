@@ -7,7 +7,6 @@ module.exports = {
     User
       .findById(userId)
       .then(user => {
-        console.log(user)
         res.render('users/profile', {user});
       })
       .catch(err => {

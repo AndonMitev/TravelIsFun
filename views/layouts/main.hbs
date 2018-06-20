@@ -14,10 +14,11 @@
         <li>
           <a href="/">Home</a>
         </li>
+        {{#if isAdmin}}
         <li>
-          <a href="/about">About</a>
+          <a href="/destination/create">Create</a>
         </li>
-        {{#if currentUser}}
+        {{/if}} {{#if currentUser}}
         <li>
           <form id="logout-form" action="/logout" method="post"></form>
           <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
@@ -37,8 +38,7 @@
     </header>
     <main>
       {{#if globalError}}
-      <h3 class="globalError">{{globalError}}</h3> {{/if}}
-       {{{body}}}
+      <h3 class="globalError">{{globalError}}</h3> {{/if}} {{{body}}}
     </main>
   </div>
 </body>
