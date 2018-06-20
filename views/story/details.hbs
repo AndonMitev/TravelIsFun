@@ -1,0 +1,26 @@
+<h1>{{this.title}}</h1>
+<h4>{{this.description}}</h4>
+<img src="{{this.urlImage}}" alt="{{this.title}}">
+<p>
+  <span>Author: {{this.author.username}} Created on: {{this.createdOn}}</span>
+</p>
+<br>
+<h3>Comment Section:</h3>
+{{#each this.comments}}
+<p>{{this.commentContent}}</p>
+<p>
+  <strong>Posted by:
+    <p>{{this.userId}}</p>
+    <a href="/profile/{{this.userId}}">{{this.authorName}}</a></strong>
+</p>
+<br> {{/each}}
+
+
+{{#if currentUser}}
+<h3>Post new comment:</h3>
+<form action="/story/details/{{this._id}}" method="post">
+  <textarea name="comment" cols="60" rows="10"></textarea>
+  <br>
+  <input type="submit" value="Post" />
+</form>
+{{/if}}

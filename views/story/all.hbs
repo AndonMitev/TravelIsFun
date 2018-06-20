@@ -1,0 +1,9 @@
+<h1>Here are all stories</h1>
+<h3 class="successMsg">{{message}}</h3>
+<ul>
+  {{#each stories}}
+  <li>
+    <a href="/story/details/{{this._id}}">{{this.title}}</a>
+  </li>
+  {{/each}}
+</ul>

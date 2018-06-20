@@ -23,5 +23,9 @@ ul li a {
 }
 
 .error {
-    color: red;
+  background-color: red;
+}
+
+.successMsg {
+  background-color: green;
 }

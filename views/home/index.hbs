@@ -1,10 +1,12 @@
 <div>
   <ul>
+    {{#if currentUser}}
     <li>
       <a href="/story/create">Your Story</a>
     </li>
+    {{/if}}
     <li>
-      <a href="/story/viewAll">View all</a>
+      <a href="/story/all">View all</a>
     </li>
     <li>
       <a href="">View more</a>
