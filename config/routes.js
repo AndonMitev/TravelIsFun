@@ -46,8 +46,21 @@ module.exports = app => {
     restrictedPages.hasRole("Admin"),
     controllers.destination.postCreate
   );
+
   app.get("/destination/all", controllers.destination.getAll);
   app.get("/destination/details/:id", controllers.destination.details);
+  app.get("/destination/details/like/:id", controllers.destination.addLike);
+
+  app.get(
+    "/destination/edit/:id",
+    restrictedPages.hasRole("Admin"),
+    controllers.destination.getEdit
+  );
+  app.post(
+    "/destination/edit/:id",
+    restrictedPages.hasRole("Admin"),
+    controllers.destination.postEdit
+  );
 
   //worlds
   app.get(

@@ -1,6 +1,18 @@
-<h1>{{this.title}}</h1>
+<h1>{{destination.title}}</h1>
 
-<img src="{{this.imageUrl}}" alt="">
-<p>{{this.description}}</p>
-<p>Views: {{this.views}}</p>
-<p>Likes: {{this.likes}}</p>
+<img src="{{destination.imageUrl}}" alt="">
+<p>{{destination.description}}</p>
+<p>Views: {{destination.views.length}}</p>
+<p>Likes: {{destination.likes.length}}</p>
+
+{{#if isLiked}}
+  <p>You already like this.</p>
+{{else}}
+  {{#if currentUser}}
+    <a href="/destination/details/like/{{destination._id}}"><span><strong>Like</strong></span></a>
+  {{/if}}
+{{/if}}
+
+{{#if isAdmin}}
+  <a href="/destination/edit/{{destination._id}}">Edit</a>
+{{/if}}
