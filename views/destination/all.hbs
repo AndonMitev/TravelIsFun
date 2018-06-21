@@ -1,1 +1,9 @@
-
+<ul>
+  {{#each destinations}}
+  <li>
+    <h3>{{this.title}}</h3>
+    <img src="{{this.imageUrl}}" alt="{{this.title}}">
+    <a href="/destination/details/{{this._id}}">Read More</a>
+  </li>
+   {{/each}}
+</ul>

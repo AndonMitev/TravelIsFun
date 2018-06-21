@@ -36,9 +36,30 @@ module.exports = app => {
   );
 
   //destinations
-  app.get("/destination/create", restrictedPages.hasRole('Admin'), controllers.destination.getCreate);
-  app.post("/destination/create", restrictedPages.hasRole('Admin'), controllers.destination.postCreate);
- 
+  app.get(
+    "/destination/create",
+    restrictedPages.hasRole("Admin"),
+    controllers.destination.getCreate
+  );
+  app.post(
+    "/destination/create",
+    restrictedPages.hasRole("Admin"),
+    controllers.destination.postCreate
+  );
+  app.get("/destination/all", controllers.destination.getAll);
+  app.get("/destination/details/:id", controllers.destination.details);
+
+  //worlds
+  app.get(
+    "/world/create",
+    restrictedPages.hasRole("Admin"),
+    controllers.world.getCreate
+  );
+  app.post(
+    "/world/create",
+    restrictedPages.hasRole("Admin"),
+    controllers.world.postCreate
+  );
 
   app.all("*", (req, res) => {
     res.status(404);
