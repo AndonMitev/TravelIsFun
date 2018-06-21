@@ -5,6 +5,7 @@ const User = require("../models/User");
 require("../models/Story");
 require("../models/CommentData");
 require("../models/Destination");
+require('../models/Category');
 
 module.exports = config => {
   mongoose.connect(
