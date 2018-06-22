@@ -14,14 +14,10 @@
         <li>
           <a href="/">Home</a>
         </li>
-        {{#if isAdmin}}
         <li>
-          <a href="/destination/create">Create Destination</a>
+          <a href="/category/create">Create Destination</a>
         </li>
-        <li>
-          <a href="/world/create">Create World</a>
-        </li>
-        {{/if}} {{#if currentUser}}
+        {{#if currentUser}}
         <li>
           <form id="logout-form" action="/logout" method="post"></form>
           <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>

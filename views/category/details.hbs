@@ -9,10 +9,10 @@
   <p>You already like this.</p>
 {{else}}
   {{#if currentUser}}
-    <a href="/destination/details/like/{{destination._id}}"><span><strong>Like</strong></span></a>
+    <a href="/category/{{destination.title}}/details/like/{{destination._id}}"><span><strong>Like</strong></span></a>
   {{/if}}
 {{/if}}
 
 {{#if isAdmin}}
-  <a href="/destination/edit/{{destination._id}}">Edit</a>
+  <a href="/category/{{destination.title}}/edit/{{destination._id}}">Edit</a>
 {{/if}}

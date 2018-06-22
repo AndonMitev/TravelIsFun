@@ -3,7 +3,7 @@ const restrictedPages = require("./auth");
 
 module.exports = app => {
   //user
-  app.get("/", controllers.home.index);
+  app.get("/", controllers.home.getAll);
 
   app.get("/register", controllers.user.registerGet);
   app.post("/register", controllers.user.registerPost);
@@ -27,7 +27,7 @@ module.exports = app => {
     restrictedPages.isAuthed,
     controllers.story.postCreateStory
   );
-  app.get("/story/all", controllers.story.viewAll);
+  app.get("/story/all", controllers.story.viewAll); // free
   app.get("/story/details/:id", controllers.story.details);
   app.post(
     "/story/details/:id",
@@ -35,43 +35,33 @@ module.exports = app => {
     controllers.story.comment
   );
 
-  //destinations
+  //categories
+  app.get("/category", controllers.category.getCategory.getCurrentCategory); // free
   app.get(
-    "/destination/create",
+    "/category/create",
     restrictedPages.hasRole("Admin"),
-    controllers.destination.getCreate
+    controllers.category.getPostCreate.getCreate
   );
   app.post(
-    "/destination/create",
+    "/category/create",
     restrictedPages.hasRole("Admin"),
-    controllers.destination.postCreate
+    controllers.category.getPostCreate.postCreate
   );
-
-  app.get("/destination/all", controllers.destination.getAll);
-  app.get("/destination/details/:id", controllers.destination.details);
-  app.get("/destination/details/like/:id", controllers.destination.addLike);
-
+  app.get("/category/:title/details/:id", controllers.category.details.details); // free
   app.get(
-    "/destination/edit/:id",
+    "/category/:title/details/like/:id",
+    restrictedPages.isAuthed,
+    controllers.category.details.addLike
+  );
+  app.get(
+    "/category/:title/edit/:id",
     restrictedPages.hasRole("Admin"),
-    controllers.destination.getEdit
+    controllers.category.edit.getEdit
   );
   app.post(
-    "/destination/edit/:id",
+    "/category/:title/edit/:id",
     restrictedPages.hasRole("Admin"),
-    controllers.destination.postEdit
-  );
-
-  //worlds
-  app.get(
-    "/world/create",
-    restrictedPages.hasRole("Admin"),
-    controllers.world.getCreate
-  );
-  app.post(
-    "/world/create",
-    restrictedPages.hasRole("Admin"),
-    controllers.world.postCreate
+    controllers.category.edit.postEdit
   );
 
   app.all("*", (req, res) => {

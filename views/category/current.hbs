@@ -1,0 +1,7 @@
+<h1>{{currentFoundedCategory}} Category:</h1>
+{{#each foundedCategory}}
+{{#each this.destination}}
+<a href="/category/{{this.title}}/details/{{this._id}}"><h3>{{this.title}}</h3></a>
+
+{{/each}}
+{{/each}}

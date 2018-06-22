@@ -13,8 +13,12 @@
     </li>
   </ul>
 </div>
-<h1>Top 10 destinations for 2018:</h1>
 
-<h1>View our categories:</h1>
-<a href="/destination/all">Destination Trips</a>
-<a href="/world/all">World Trips</a>
+<h2>View our categories</h2>
+
+{{#each categories}}
+<div name="{{this.category}}">
+  <a href="/category?selected={{this.category}}">{{this.category}}</a>
+</div>
+{{/each}}
+
