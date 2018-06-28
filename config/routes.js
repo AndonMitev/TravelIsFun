@@ -41,8 +41,13 @@ module.exports = app => {
   );
   app.get(
     "/story/edit/:id",
-    (restrictedPages.isAuthed || restrictedPages.hasRole("Admin")),
+    restrictedPages.isAuthed || restrictedPages.hasRole("Admin"),
     controllers.story.edit.getEdit
+  );
+  app.post(
+    "/story/edit/:id",
+    restrictedPages.isAuthed || restrictedPages.hasRole("Admin"),
+    controllers.story.edit.postEdit
   );
 
   //categories

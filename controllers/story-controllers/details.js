@@ -8,10 +8,15 @@ module.exports = {
       .populate("comments")
       .then(story => {
         let isLiked = false;
+        let editOrDeleteRestriction = false;
         if (!req.user) {
           return res.render("story/details", { story });
         }
         const userId = req.user.id;
+        if (userId == story.author || res.locals.isAdmin) {
+          editOrDeleteRestriction = true;
+        }
+
         if (story.likes.indexOf(userId) !== -1) {
           isLiked = true;
         }
@@ -20,10 +25,18 @@ module.exports = {
           story.views.push(userId);
 
           story.save().then(story => {
-            res.render("story/details", { story, isLiked });
+            return res.render("story/details", {
+              story,
+              isLiked,
+              editOrDeleteRestriction
+            });
           });
         } else {
-          return res.render("story/details", { story, isLiked });
+          return res.render("story/details", {
+            story,
+            isLiked,
+            editOrDeleteRestriction
+          });
         }
       })
       .catch(err => {

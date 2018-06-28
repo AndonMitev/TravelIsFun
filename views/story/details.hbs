@@ -3,8 +3,10 @@
 <img src="{{story.urlImage}}" alt="{{story.title}}">
 <p>
   <span>Author: {{story.author.username}} Views: {{story.views.length}} Likes: {{story.likes.length}}</span>
+  {{#if editOrDeleteRestriction}}
   <a href="/story/edit/{{story._id}}">Edit</a>
   <a href="/story/delete/{{story._id}}">Delete</a>
+  {{/if}}
   {{#if isLiked}}
   <p>You already like this.</p>
   {{else}} {{#if currentUser}}
