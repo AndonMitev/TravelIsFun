@@ -34,6 +34,16 @@ module.exports = app => {
     restrictedPages.isAuthed,
     controllers.story.comment
   );
+  app.get(
+    "/story/details/like/:id",
+    restrictedPages.isAuthed,
+    controllers.story.addLike
+  );
+  app.get(
+    "/story/edit/:id",
+    (restrictedPages.isAuthed || restrictedPages.hasRole("Admin")),
+    controllers.story.edit.getEdit
+  );
 
   //categories
   app.get("/category", controllers.category.getCategory.getCurrentCategory); // free

@@ -1,0 +1,12 @@
+<form action="/story/edit/{{this._id}}" method="POST">
+  <label>Title:</label>
+  <input type="text" name="title" value={{this.title}} />
+  <br>
+  <label>description:</label>
+  <textarea name="description" id="" cols="30" rows="10">{{this.description}}</textarea>
+  <br>
+  <label>Url Image:</label>
+  <input type="text" name="urlImage" value={{this.urlImage}} />
+  <br>
+  <input type="submit">
+</form>

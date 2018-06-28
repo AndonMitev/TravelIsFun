@@ -15,7 +15,9 @@ const storySchema = new mongoose.Schema(
       ref: "User",
       required: [true, "User is required to create Story"]
     },
-    urlImage: { type: String, required: [true, "Image is required"] }
+    urlImage: { type: String, required: [true, "Image is required"] },
+    views: [{type: ObjectId, ref: 'User', default: []}],
+    likes: [{type: ObjectId, ref: 'User', default: []}]
   },
   { usePushEach: true }
 );

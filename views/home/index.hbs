@@ -22,3 +22,19 @@
 </div>
 {{/each}}
 
+<h2>Last created stories:</h2>
+
+<ul>
+
+  {{#each foundedStories}}
+  <li>
+    <h3>
+      <a href="/story/details/{{this._id}}">{{this.title}}</a>
+    </h3>
+  </li>
+  {{else}}
+  <p>No stories were created</p>
+  {{/each}}
+</ul>
+
+<h2>Top 10 stories:</h2>

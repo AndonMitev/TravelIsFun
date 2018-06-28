@@ -1,8 +1,13 @@
 <h1>Welcome to {{user.username}} profile</h1>
 
-<h3>Last articles u visit: </h3>
+<h3>Latest stories from user: </h3>
 <ul>
-  {{#each articles}}
-  <li></li>
+  {{#each foundedStories}}
+  <li>
+    <a href="/story/details/{{this._id}}"><h3>{{this.title}}</h3></a>
+    <p>{{this.description}}</p>
+  </li>
+  {{else}}
+  <p>Author has no stories created yet</p>
   {{/each}}
 </ul>
