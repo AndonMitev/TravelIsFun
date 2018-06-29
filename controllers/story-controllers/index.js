@@ -1,10 +1,13 @@
-const getCreateStory = require('./create').getCreateStory;
-const postCreateStory = require('./create').postNewStory;
-const viewAll = require('./all').viewAll;
-const details = require('./details').storyDetails;
-const addLike = require('./details').addLike;
-const comment = require('./comment').createComment;
-const edit = require('./edit');
+const getCreateStory = require('./createStory').getCreateStory;
+const postCreateStory = require('./createStory').postNewStory;
+const viewAll = require('./allStories').viewAll;
+const details = require('./detailsStory').storyDetails;
+const addLike = require('./detailsStory').addLike;
+const comment = require('./createComment').createComment;
+const edit = require('./editStory');
+const deleteStory = require('./deleteStory').deleteStory;
+const editComment = require('./editComment');
+const deleteComment = require('./deleteComment').deleteComment;
 
 module.exports = {
   getCreateStory,
@@ -13,5 +16,8 @@ module.exports = {
   details,
   addLike,
   comment,
-  edit
+  edit,
+  editComment,
+  deleteComment,
+  deleteStory
 }

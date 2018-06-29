@@ -8,13 +8,21 @@ module.exports = {
       .populate("comments")
       .then(story => {
         let isLiked = false;
-        let editOrDeleteRestriction = false;
+        let editOrDeleteRestrictionForStories = false;
+        let editOrDeleteRestrictionForComment = false;
+        let isCreatorOfComment = false;
+
         if (!req.user) {
           return res.render("story/details", { story });
         }
         const userId = req.user.id;
-        if (userId == story.author || res.locals.isAdmin) {
-          editOrDeleteRestriction = true;
+
+        if (userId == story.author._id || res.locals.isAdmin) {
+          editOrDeleteRestrictionForComment = true;
+        }
+
+        if (userId == story.author._id || res.locals.isAdmin) {
+          editOrDeleteRestrictionForStories = true;
         }
 
         if (story.likes.indexOf(userId) !== -1) {
@@ -28,14 +36,16 @@ module.exports = {
             return res.render("story/details", {
               story,
               isLiked,
-              editOrDeleteRestriction
+              editOrDeleteRestrictionForStories,
+              editOrDeleteRestrictionForComment
             });
           });
         } else {
           return res.render("story/details", {
             story,
             isLiked,
-            editOrDeleteRestriction
+            editOrDeleteRestrictionForStories,
+            editOrDeleteRestrictionForComment
           });
         }
       })

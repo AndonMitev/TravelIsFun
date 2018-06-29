@@ -38,3 +38,12 @@
 </ul>
 
 <h2>Top 10 stories:</h2>
+<ul>
+  {{#each topStories}}
+  <li>
+    <a href="/story/details/{{this._id}}">
+      <h3>{{this.title}}</h3>
+    </a>
+  </li>
+  {{/each}}
+</ul>

@@ -49,6 +49,26 @@ module.exports = app => {
     restrictedPages.isAuthed || restrictedPages.hasRole("Admin"),
     controllers.story.edit.postEdit
   );
+  app.get(
+    "/story/delete/:id",
+    restrictedPages.isAuthed || restrictedPages.hasRole("Admin"),
+    controllers.story.deleteStory
+  );
+  app.get(
+    "/story/comment/edit/:id",
+    restrictedPages.isAuthed || restrictedPages.hasRole("Admin"),
+    controllers.story.editComment.getEditComment
+  );
+  app.post(
+    "/story/comment/edit/:id",
+    restrictedPages.isAuthed || restrictedPages.hasRole("Admin"),
+    controllers.story.editComment.postEditComment
+  );
+  app.get(
+    "/story/comment/delete/:id",
+    restrictedPages.isAuthed || restrictedPages.hasRole("Admin"),
+    controllers.story.deleteComment
+  );
 
   //categories
   app.get("/category", controllers.category.getCategory.getCurrentCategory); // free

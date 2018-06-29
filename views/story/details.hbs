@@ -3,11 +3,10 @@
 <img src="{{story.urlImage}}" alt="{{story.title}}">
 <p>
   <span>Author: {{story.author.username}} Views: {{story.views.length}} Likes: {{story.likes.length}}</span>
-  {{#if editOrDeleteRestriction}}
+  {{#if editOrDeleteRestrictionForStories}}
   <a href="/story/edit/{{story._id}}">Edit</a>
   <a href="/story/delete/{{story._id}}">Delete</a>
-  {{/if}}
-  {{#if isLiked}}
+  {{/if}} {{#if isLiked}}
   <p>You already like this.</p>
   {{else}} {{#if currentUser}}
   <a href="/story/details/like/{{story._id}}">
@@ -24,9 +23,15 @@
 <p>{{this.commentContent}}</p>
 <p>
   <strong>Posted by:
-    <p>{{this.userId}}</p>
     <a href="/profile/{{this.userId}}">{{this.authorName}}</a>
   </strong>
+
+  {{#if ../editOrDeleteRestrictionForComment}}
+  <a href="/story/comment/edit/{{this._id}}">Edit</a>
+  <a href="/story/comment/delete/{{this._id}}">Delete</a>
+  {{/if}}
+
+
 </p>
 <br> {{/each}} {{#if currentUser}}
 <h3>Post new comment:</h3>

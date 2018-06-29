@@ -8,15 +8,22 @@ module.exports = {
         Story.find()
           .populate("author")
           .then(foundedStories => {
+            let topStories = [];
             if (foundedStories.length !== 0) {
-              foundedStories.sort((a, b) => b.createdOn - a.createdOn);
-             /* let topStories = foundedStories
-                .sort((a, b) => b.views.length - a.view.length)
-                .slice(0, 10); */
+              foundedStories.sort(
+                (a, b) => new Date(b.createdOn) - new Date(a.createdOn)
+              );
+              topStories = foundedStories
+                .slice(0, 10)
+                .sort((a, b) => b.likes.length - a.likes.length);
             }
 
             categories = categories.filter(e => e.destination.length !== 0);
-            return res.render("home/index", { categories, foundedStories, });
+            return res.render("home/index", {
+              categories,
+              foundedStories,
+              topStories
+            });
           });
       })
       .catch(err => {
